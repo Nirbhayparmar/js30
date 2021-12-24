@@ -33,5 +33,5 @@ function setTime(){
     hourHand.style.transform=`rotate(${hourDegree}deg)`;
 }
 
-setInterval(setTime,1000);
+//setInterval(setTime,1000);
 
