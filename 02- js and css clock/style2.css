@@ -48,7 +48,9 @@ body {
 .hour-hand{
   width: 30%;
   height: 8px;
+  transform-origin: 120%;
 }
 .min-hand{
   width: 40%;
+  transform-origin: 110%;
 }
