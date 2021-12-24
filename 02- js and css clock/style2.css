@@ -47,13 +47,14 @@ body {
 }
 .hour-hand{
   width: 30%;
-  height: 8px;
+  height: 10px;
   transform-origin: 166%;
   top: 69%;
   background: red;
 }
 .min-hand{
   width: 40%;
+  height: 8px;
   transform-origin: 125%;
   top: 59.4%;
   background: yellow;
