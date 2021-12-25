@@ -53,3 +53,11 @@ body {
   height: 8px;
   background: yellow;
 }
+.circle{
+  width: 25px;
+  height: 25px;
+  background:white;
+  border-radius: 50%;
+  top: 93%;
+  transform-origin: 599%;
+}
