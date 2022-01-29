@@ -65,7 +65,7 @@ canvas.addEventListener("touchend", (e) => {
 	e.preventDefault();
 	log("touchend");
 
-	var touches = evt.changedTouches;
+	var touches = e.changedTouches;
 
 	for (var i = 0; i < touches.length; i++) {
 		var color = colorForTouch(touches[i]);
@@ -90,7 +90,7 @@ canvas.addEventListener("touchmove", (e) => {
 	for (var i = 0; i < touches.length; i++) {
 		var color = colorForTouch(touches[i]);
 		var idx = ongoingTouchIndexById(touches[i].identifier);
-
+		var touches = e.changedTouches;
 		if (idx >= 0) {
 			console.log("continuing touch " + idx);
 			ctx.beginPath();
