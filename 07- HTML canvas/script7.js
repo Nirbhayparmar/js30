@@ -65,8 +65,37 @@ canvas.addEventListener("touchstart", (e) => {
 // 	console.log(e);
 // });
 // canvas.addEventListener("touchcancel", (e) => {
-// 	console.log(e);
+//
 // });
-// canvas.addEventListener("touchmove", (e) => {
-// 	console.log(e);
-// });
+canvas.addEventListener("touchmove", (e) => {
+	e.preventDefault();
+	for (var i = 0; i < touches.length; i++) {
+		var color = colorForTouch(touches[i]);
+		var idx = ongoingTouchIndexById(touches[i].identifier);
+
+		if (idx >= 0) {
+			console.log("continuing touch " + idx);
+			ctx.beginPath();
+			console.log(
+				"ctx.moveTo(" +
+					ongoingTouches[idx].pageX +
+					", " +
+					ongoingTouches[idx].pageY +
+					");"
+			);
+			ctx.moveTo(ongoingTouches[idx].pageX, ongoingTouches[idx].pageY);
+			console.log(
+				"ctx.lineTo(" + touches[i].pageX + ", " + touches[i].pageY + ");"
+			);
+			ctx.lineTo(touches[i].pageX, touches[i].pageY);
+			ctx.lineWidth = 4;
+			ctx.strokeStyle = color;
+			ctx.stroke();
+
+			ongoingTouches.splice(idx, 1, copyTouch(touches[i])); // swap in the new touch record
+			console.log(".");
+		} else {
+			console.log("can't figure out which touch to continue");
+		}
+	}
+});
