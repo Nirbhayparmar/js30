@@ -42,15 +42,31 @@ function draw(e) {
 	}
 }
 
-// let mouseX;
-// let mouseY;
-// canvas.addEventListener("click", function (e) {
-// 	mouseX = e.clientX;
-// 	mouseY = e.clientY;
-// 	console.log(mouseX, mouseY);
-// 	ctx.beginPath();
-// 	ctx.moveTo(0, 0);
-// 	ctx.moveTo(mouseX, mouseY);
-// 	ctx.lineTo(mouseY, mouseX);
-// 	ctx.stroke();
+//for touch screen devices
+var ongoingTouches = [];
+
+canvas.addEventListener("touchstart", (e) => {
+	e.preventDefault();
+	console.log("touchstart.");
+	var touches = e.changedTouches;
+
+	for (var i = 0; i < touches.length; i++) {
+		console.log("touchstart:" + i + "...");
+		ongoingTouches.push(copyTouch(touches[i]));
+		var color = colorForTouch(touches[i]);
+		ctx.beginPath();
+		ctx.arc(touches[i].pageX, touches[i].pageY, 4, 0, 2 * Math.PI, false); // a circle at the start
+		ctx.fillStyle = color;
+		ctx.fill();
+		console.log("touchstart:" + i + ".");
+	}
+});
+// canvas.addEventListener("touchend", (e) => {
+// 	console.log(e);
+// });
+// canvas.addEventListener("touchcancel", (e) => {
+// 	console.log(e);
+// });
+// canvas.addEventListener("touchmove", (e) => {
+// 	console.log(e);
 // });
