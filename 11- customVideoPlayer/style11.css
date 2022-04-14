@@ -32,7 +32,7 @@ body {
 /* This css is only applied when fullscreen is active. */
 .player:fullscreen {
 	max-width: none;
-	width: 100%;
+	width: 90%;
 }
 
 .player:-webkit-full-screen {
@@ -75,6 +75,18 @@ body {
 	flex-wrap: wrap;
 	background: rgba(0, 0, 0, 0.1);
 }
+.player__controls:fullscreen {
+	display: flex;
+	position: absolute;
+	top: 40px;
+	left: 50px;
+	width: 100%;
+	z-index: 999;
+	/* transform: translateY(100%) translateY(-5px); */
+	transition: all 0.3s;
+	flex-wrap: wrap;
+	background: rgba(0, 0, 0, 0.1);
+}
 
 .player:hover .player__controls {
 	transform: translateY(0);
@@ -96,14 +108,14 @@ body {
 	height: 5px;
 	transition: height 0.3s;
 	background: rgba(0, 0, 0, 0.5);
-	cursor: ew-resize;
+	cursor: pointer;
 }
 
 .progress__filled {
 	width: 50%;
 	background: #ffc600;
 	flex: 0;
-	flex-basis: 50%;
+	flex-basis: 0%;
 }
 
 /* unholy css to style input type="range" */
